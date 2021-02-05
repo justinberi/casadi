@@ -50,6 +50,12 @@ if(WITH_IPOPT)
   target_link_libraries(rocket_mx_and_sx casadi)
 endif()
 
+# Cart pole direct collocation
+if(WITH_IPOPT)
+  add_executable(cart_pole_collocation cart_pole_collocation.cpp)
+  target_link_libraries(cart_pole_collocation casadi casadi_nlpsol_ipopt)
+endif()
+
 # Parse AMPL models and solve with Ipopt
 if(WITH_IPOPT)
   add_executable(ipopt_nl ipopt_nl.cpp)
